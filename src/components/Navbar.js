@@ -8,24 +8,24 @@ const Navbar = () => {
     <>
     
     <nav className="bg-white shadow-lg">
-      <div className="w-11/12 mx-auto px-4">
-        <div className="flex justify-between">
+      <div className="w-11/12 container mx-auto px-4">
+        <div className="flex justify-between items-center">
           <div className="flex space-x-7">
             <div>
               <Link href="/" className="flex items-center py-4 px-2 ">
-              <Image src="/JOBME.png" width={100} height={100}  />
+              <Image src="/JOBME.png" width={75} height={100}  />
               </Link>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-1 gap-4">
-            <Link href="/" className="py-4 px-2 text-gray-500 text-hover transition duration-300">Home</Link>
-            <Link href="/about" className="py-4 px-2 text-gray-500 text-hover transition duration-300">Job Listings</Link>
-            <Link href="/contact" className="py-4 px-2 text-gray-500 text-hover transition duration-300">Contact Us</Link>
+            <Link href="/" className="py-4 px-2 text-black text-hover transition duration-300">Home</Link>
+            <Link href="/about" className="py-4 px-2 text-black text-hover transition duration-300">Job Listings</Link>
+            <Link href="/contact" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
           </div>
 
-          <div className='max-sm:hidden md:visible flex justify-center gap-3'>
+          <div className='hidden md:flex justify-center gap-1'>
             <button className='w-16 h-10 my-auto rounded btn-color text-white hover:bg-white hover:text-black'>Log In</button>
-            <button className='w-16 h-10 my-auto rounded hover-btn hover:text-white'>Sign Up</button>
+            <button className='w-16 ml-2 h-10 my-auto rounded hover-btn hover:text-white'>Sign Up</button>
           </div>
           
           <div className="md:hidden flex items-center">
@@ -48,15 +48,15 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
+      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
         <Link href="/" className="block py-2 px-4 text-sm text-black text-hover">Home</Link>
         <Link href="/about" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
         <Link href="/contact" className="block py-2 px-4 text-sm text-black text-hover">Contact Us</Link>
 
-        <div className='flex flex-col justify-start gap-2 mt-2'>
-            <button className='text-left ps-4 text-hover'>Log In</button>
-            <button className='text-left ps-4 text-hover'>Sign Up</button>
-          </div>
+        <Link href="/login" className="block py-2 px-4 text-sm text-black text-hover">Log In</Link>
+        <Link href="/signup" className="block py-2 px-4 text-sm text-black text-hover">Sign Up</Link>
+
+        
       
       </div>
     </nav>

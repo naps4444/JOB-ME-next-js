@@ -12,3 +12,25 @@
 .text-hover:hover{
   color: #0dcaf0;
 }
+.section-1{
+  background-image: url('/HeroSection.png');
+  background-size: cover;
+  background-position: 100%;
+  background-repeat: no-repeat;
+  
+}
+.section-11{
+  background-image: url('/HeroSection.png');
+  background-size: cover;
+  background-position: 100%;
+  /* height: fit-content; */
+  background-repeat: no-repeat;
+  
+}
+.section-2{
+  background-color: #0dcaf074;
+  
+}
+.optiondiv{
+  opacity: 1;
+}
