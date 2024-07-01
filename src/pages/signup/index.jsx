@@ -9,7 +9,7 @@ const SignUp = () => {
       <div className=' w-10/12 md:w-9/12 lg:w-10/12 xl:w-8/12 mx-auto mt-5 my-auto'>
           <div className='flex justify-center mx-auto'>
         <Link href="/">
-        <Image src="/jobme.png" width={75} height={75} />
+        <Image src="/jobme.png" width={75} height={75} alt='home logo' />
 
         </Link>
           </div>
@@ -64,9 +64,9 @@ const SignUp = () => {
               <p>Or continue with</p>
             </div>
             <div className='flex gap-2'>
-              <Image src="/fblogo.png" width={25} height={25} />
-              <Image src="/gmaillogo.png" width={25} height={25} />
-              <Image src="/linklogo.png" width={25} height={25} />
+              <Image src="/fblogo.png" width={25} height={25} alt='facebook logo'/>
+              <Image src="/gmaillogo.png" width={25} height={25} alt='gmail logo' />
+              <Image src="/linklogo.png" width={25} height={25} alt='linkdln logo'/>
             </div>
 
             <div>
