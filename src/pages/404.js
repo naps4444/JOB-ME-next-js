@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 
 export default function NotFound () {
@@ -28,18 +29,18 @@ export default function NotFound () {
           <h3 className='font-bold text-xl md:text-start mt-5'>Page not found</h3>
           <p className="text-base leading-7 justify-start text-gray-600">This page doesn’t exist, we suggest you go back to home.</p>
           <div className="mt-4 flex justify-center  md:justify-start gap-x-6">
-            <a
+            <Link
               href="/"
               className="rounded-lg btn-color text-white px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Back to home
-            </a>
+            </Link>
             
           </div>
         </div>
 
         <div>
-          <Image src="/error.png" width={400} height={100} />
+          <Image src="/error.png" width={400} height={100} alt='error image' />
 
         </div>
       </main>

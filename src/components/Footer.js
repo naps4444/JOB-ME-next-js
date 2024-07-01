@@ -6,11 +6,11 @@ const Footer = () => {
   return (
     <>
     <div className='border-y-2 py-6'>
-    <div className='w-11/12 container mx-auto px-4 grid grid-cols-2 justify-between'>
+    <div className='w-11/12 md:w-10/12 lg:w-10/12 container mx-auto grid grid-cols-2 justify-between'>
     <div className='left flex flex-col gap-2'>
         <div className='logo'>
               <Link href="/" className="flex items-center py-4 px-2 ">
-              <Image src="/JOBME.png" width={75} height={100}  />
+              <Image src="/JOBME.png" width={75} height={100} alt='logo'  />
               </Link>
         </div>
 
@@ -20,10 +20,10 @@ const Footer = () => {
             </div>
 
             <div className='flex gap-2'>
-                <Image src="/fiby.png" width={25} height={20}/>
-                <Image src="/linklogo.png" width={25} height={20}/>
-                <Image src="/instanta.png" width={25} height={20}/>
-                <Image src="/xster.png" width={25} height={20}/>                
+                <Image src="/fiby.png" width={25} height={20} alt='facebook logo'/>
+                <Image src="/linklogo.png" width={25} height={20} alt='linkedin logo'/>
+                <Image src="/instanta.png" width={25} height={20} alt='instagram logo'/>
+                <Image src="/xster.png" width={25} height={20} alt='twitter logo'/>                
             </div>
         </div>
 

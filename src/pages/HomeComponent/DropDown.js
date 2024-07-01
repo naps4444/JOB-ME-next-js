@@ -3,27 +3,27 @@ import React from 'react'
 const DropDown = () => {
   return (
     <div className='section-2 h-16 flex items-center'>
-        <div className='container flex flex-col md:flex-row mx-auto justify-center gap-4 xl:gap-10'>
+        <div className='container w-10/12  flex flex-col md:flex-row mx-auto justify-between gap-4 xl:gap-10'>
 
-            <div className='lg:px-3 lg:py-2 bg-white rounded-lg'>
-            <select className='rounded-lg'>
+            <div className='lg:px-3 lg:py-2 xl:w-44 flex justify-center bg-white rounded-lg'>
+            <select className='rounded-lg '>
             <option>Select Job Type</option>
             </select>
             </div>
 
-            <div className='lg:px-3 lg:py-2 bg-white rounded-lg'>
+            <div className='lg:px-3 lg:py-2 xl:w-44 flex justify-center bg-white rounded-lg'>
             <select className='rounded-lg'>
             <option>Select Industry</option>
             </select>
             </div>
 
-            <div className='lg:px-3 lg:py-2 bg-white rounded-lg'>
+            <div className='lg:px-3 lg:py-2 xl:w-48 flex justify-center bg-white rounded-lg'>
             <select className='rounded-lg'>
             <option>Select Mode of Work</option>
             </select>
             </div>
 
-            <div className='lg:px-3 lg:py-2 bg-white rounded-lg'>
+            <div className='lg:px-3 lg:py-2 xl:w-48 flex justify-center bg-white rounded-lg'>
             <select className='rounded-lg'>
             <option>Select Mode of Work</option>
             </select>

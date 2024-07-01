@@ -3,6 +3,8 @@ import Hero from "./HomeComponent/Hero";
 import SectionOne from "./HomeComponent/SectionOne";
 import SectionTwo from "./HomeComponent/SectionTwo";
 
+import SectionThree from "./HomeComponent/SectionThree";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -11,6 +13,8 @@ export default function Home() {
     <Hero/>
     <SectionOne/>
     <SectionTwo/>
+    <SectionThree/>
+   
     </>
   );
 }

@@ -5,6 +5,10 @@
 .btn-color{
   background-color: #0dcaf0;
 }
+
+.icon-color{
+  color: #0dcaf0;
+}
 .hover-btn:hover{
   background-color: #0dcaf0;
   color: white;
@@ -33,4 +37,14 @@
 }
 .optiondiv{
   opacity: 1;
+}
+.border{
+  border: 1px solid rgba(118, 118, 118, 0.795);
+}
+@media (min-width: 768px){
+  .sign-bg{
+    background-image: url(/signup.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

@@ -8,12 +8,12 @@ const Navbar = () => {
     <>
     
     <nav className="bg-white shadow-lg">
-      <div className="w-11/12 container mx-auto px-4">
+      <div className="w-11/12 md:w-10/12 lg:w-10/12 container mx-auto ">
         <div className="flex justify-between items-center">
           <div className="flex space-x-7">
             <div>
               <Link href="/" className="flex items-center py-4 px-2 ">
-              <Image src="/JOBME.png" width={75} height={100}  />
+              <Image src="/JOBME.png" width={75} height={100} alt='logo' />
               </Link>
             </div>
           </div>
@@ -24,8 +24,13 @@ const Navbar = () => {
           </div>
 
           <div className='hidden md:flex justify-center gap-1'>
+            <Link href="/login">
             <button className='w-16 h-10 my-auto rounded btn-color text-white hover:bg-white hover:text-black'>Log In</button>
+            </Link>
+
+            <Link href="/signup">
             <button className='w-16 ml-2 h-10 my-auto rounded hover-btn hover:text-white'>Sign Up</button>
+            </Link>
           </div>
           
           <div className="md:hidden flex items-center">
