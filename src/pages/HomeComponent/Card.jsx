@@ -42,7 +42,7 @@ const Card = () => {
                     </div>
                 </div>
                 <div className='mt-4'>
-                    <button className='btn-color text-white p-2 px-3 rounded-lg'>
+                    <button className='btn-color text-white p-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>
                         Apply Now
                     </button>
                 </div>

@@ -4,16 +4,16 @@ import Image from 'next/image'
 const HowItWorks = () => {
   return (
     <div>
-        <div className='w-10/12 container text-center mx-auto mt-10'>
+        <div className='w-11/12 container text-center mx-auto mt-10'>
         <h1 className='text-xl font-semibold'>How It Works?</h1>
 
-        <div className='flex justify-center mt-5'>
-        <Image src="/howworks.png" width={1000} height={100} alt='stepper image' />
+        <div className='flex justify-center mt-5 w-full'>
+        <Image src="/howworks.png" width={1000} height={100} alt='stepper image' className='w-full' />
         </div>
 
         </div>
 
-        <div className='grid grid-cols-4 container justify-start text-center text-xs w-10/12 mx-auto'>
+        <div className='grid grid-cols-4 w-full font-bold container justify-start text-center text-xs mx-auto'>
             <div className='text-left xl:text-center 2xl:text-right'>
                 <h1>Create an account/Login</h1>
             </div>

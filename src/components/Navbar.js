@@ -6,9 +6,10 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>
-    
-    <nav className="bg-white shadow-lg">
-      <div className="w-11/12 md:w-10/12 lg:w-10/12 container mx-auto ">
+    <div className='sticky top-0 z-50'>
+      
+    <nav className="bg-[#FFFFFFCC] py-1 lg:py-2 shadow-lg ">
+      <div className="w-11/12 container mx-auto ">
         <div className="flex justify-between items-center">
           <div className="flex space-x-7">
             <div>
@@ -19,17 +20,17 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center space-x-1 gap-4">
             <Link href="/" className="py-4 px-2 text-black text-hover transition duration-300">Home</Link>
-            <Link href="/about" className="py-4 px-2 text-black text-hover transition duration-300">Job Listings</Link>
-            <Link href="/contact" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
+            <Link href="/joblisting" className="py-4 px-2 text-black text-hover transition duration-300">Job Listings</Link>
+            <Link href="/contacts" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
           </div>
 
-          <div className='hidden md:flex justify-center gap-1'>
+          <div className='hidden md:flex justify-center gap-3'>
             <Link href="/login">
-            <button className='w-16 h-10 my-auto rounded btn-color text-white hover:bg-white hover:text-black'>Log In</button>
+            <button className='w-16 h-10 my-auto rounded-lg btn-color text-white hover:bg-white hover:text-black  ease-in-out duration-500'>Log In</button>
             </Link>
 
             <Link href="/signup">
-            <button className='w-16 ml-2 h-10 my-auto rounded hover-btn hover:text-white'>Sign Up</button>
+            <button className='w-16 ml-2 h-10  my-auto rounded-lg hover-btn hover:text-white ease-in-out duration-500'>Sign Up</button>
             </Link>
           </div>
           
@@ -65,6 +66,8 @@ const Navbar = () => {
       
       </div>
     </nav>
+    
+    </div>
     </>
   )
 }
