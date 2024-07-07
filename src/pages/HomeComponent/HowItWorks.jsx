@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 const HowItWorks = () => {
   return (
-    <div>
-        <div className='w-11/12 container text-center mx-auto mt-10'>
+    <div className='w-11/12 mx-auto'>
+        <div className=' container text-center mx-auto mt-10'>
         <h1 className='text-xl font-semibold'>How It Works?</h1>
 
         <div className='flex justify-center mt-5 w-full'>

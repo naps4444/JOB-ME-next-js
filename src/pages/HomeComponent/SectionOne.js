@@ -25,8 +25,8 @@ const SectionOne = () => {
 
         </div>
 
-        <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-20 mt-14'>
-            <div className=' w-5/6 mx-auto lg:mx-0 lg:w-96 my-auto'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-20 mt-10'>
+            <div className=' w-5/6 mx-auto lg:mr-0'>
                 <h3 className='font-bold lg:w-4/6 text-lg'>
                 Looking to be one of the World’s Best
                 Talents?

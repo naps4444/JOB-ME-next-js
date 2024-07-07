@@ -47,14 +47,24 @@
     background-image: url(/signup.png);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
   }
   .log-bg{
     background-image: url(/login.png);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 
   }
 }
+@media (min-width: 1024px){
+  .sign-bg{
+    height: 130vh;
+
+  }
+
+}
+
 
 
 .contact-bg{

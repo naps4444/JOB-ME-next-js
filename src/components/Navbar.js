@@ -56,8 +56,8 @@ const Navbar = () => {
       </div>
       <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
         <Link href="/" className="block py-2 px-4 text-sm text-black text-hover">Home</Link>
-        <Link href="/about" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
-        <Link href="/contact" className="block py-2 px-4 text-sm text-black text-hover">Contact Us</Link>
+        <Link href="/joblisting" className="block py-2 px-4 text-sm text-black text-hover">Job Listings</Link>
+        <Link href="/contacts" className="block py-2 px-4 text-sm text-black text-hover">Contact Us</Link>
 
         <Link href="/login" className="block py-2 px-4 text-sm text-black text-hover">Log In</Link>
         <Link href="/signup" className="block py-2 px-4 text-sm text-black text-hover">Sign Up</Link>
