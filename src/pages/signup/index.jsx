@@ -81,12 +81,13 @@ const password = watch("password")
             />
       <div className='bg-[#ffffffe7] w-full md:w-8/12 lg:w-6/12  py-5 rounded-3xl'>
       <div className=' w-10/12 md:w-9/12 lg:w-10/12 xl:w-8/12 mx-auto mt-5 my-auto'>
-          <div className='flex justify-center mx-auto'>
+      
         <Link href="/">
-        <Image src="/jobmen.svg" width={75} height={75} alt={"home logo"} />
+          <div className='flex justify-center mx-auto'>
+        <Image src="/JOBMEN.svg" width={75} height={75} alt={"home logo"} />
 
-        </Link>
           </div>
+        </Link>
 
           <div className='text-center mt-5'>
             <h1 className='text-lg font-semibold'>Sign Up!</h1>
