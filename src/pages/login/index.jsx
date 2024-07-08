@@ -10,8 +10,8 @@ const index = () => {
 
 
       <div className='flex justify-center mx-auto'>
-          <Link src="/" >
-          <Image href="/JOBMEN.svg" width={70} height={70} />
+          <Link href="/" >
+          <Image src="/JOBMEN.svg" width={70} height={70} alt=' jobme logo' />
           </Link>
 
         </div>
