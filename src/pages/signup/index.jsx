@@ -1,3 +1,5 @@
+"use client"
+
 import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
@@ -9,13 +11,16 @@ import toast, {Toaster} from 'react-hot-toast';
 
 const SignUp = () => {
  const {register, handleSubmit, formState:{errors}, reset, watch} = useForm();
+
+//  const [formError, setFormError] = useState("")
+
  const [loading, setLoading] = useState(false)
-const [regError, setRegError] = useState("")
+const [formError, setFormError] = useState("")
 
 
 const onSubmit = async (data)=>{
   //  console.log(data);
-
+  setLoading(true)
    try {
     const formData = {
       firstname: data.firstname,
@@ -33,26 +38,33 @@ const onSubmit = async (data)=>{
     })
     console.log(res);
 
+    if(res.status === 409){
+      setFormError("User already exist")
+      setLoading(false)
+     
+    }
+
+    const responseData = await res.json();
+    console.log(responseData);
+
     if(res.ok){
-      
+      setLoading(false)
         toast.success("Registration Successful")
         reset()
-      
-    
-
-      //toast here 
+        setFormError("")
 
     } else{
-      const errorData = await res.json()
-      console.error("user registration failed", errorData)
+      console.error("User registration failed", responseData);
+     
     }
     
    } catch (error) {
     console.log(error, "Something went wrong");
-    
+    setLoading(false)
    }
 
 }
+
 
 
 
@@ -96,8 +108,10 @@ const password = watch("password")
 
           <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col mt-7 gap-6'>
 
-          {regError && <p className='text-red-500 font-semibold'>
-            {regError}</p>}
+          {formError && <p className='text-red-500 font-semibold'>
+            {formError}</p>}
+
+            {/* {formError && <p className='text-red-500 font-bold'> { formError } </p>} */}
 
       <div>
             <div className='w-full border rounded-lg bg-transparent'>
@@ -212,7 +226,7 @@ const password = watch("password")
               </div>
             </div> */}
 
-            <button type='sumbmit' className='btn-color rounded-lg text-white mt-2 py-1 w-full hover:bg-white hover:text-black'>Sign Up</button>
+            <button type='sumbmit' className='btn-color rounded-lg text-white mt-2 py-1 w-full hover:bg-white hover:text-black'> { loading ? "Loading..." : "Sign Up" } </button>
           </form>
 
 
