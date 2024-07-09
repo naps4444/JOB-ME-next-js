@@ -1,11 +1,13 @@
 import React from 'react'
 
-const {joy , john , kevin } = Data();
+
 
 
 const AppliedJobs = () => {
   return (
-    <div>AppliedJobs</div>
+    <div>
+      <h1>Applied jobs</h1>
+    </div>
 
     
   )
