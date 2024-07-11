@@ -8,7 +8,7 @@ const SectionOne = () => {
     <div className='container mx-auto pt-7 pb-7 w-11/12'>
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-20'>
             <div className=' hidden lg:block ml-0 w-full'>
-                <Image  src="/dmimg1.png" width={400} height={100} alt='4 developers coding'  className='xl:w-full ml-0'/>
+                <Image  src="/dmimg1.png" width={400} height={100} alt='4 developers coding'  className='xl:w-full ml-0 '/>
             </div>
 
             <div className='w-5/6 mx-auto lg:mr-0'>

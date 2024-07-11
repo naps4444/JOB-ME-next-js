@@ -1,5 +1,5 @@
-import connectMongoDB from "../../../lib/mongodb";
-import User from "../../../models/Users";
+import connectMongoDB from "../../../../lib/mongodb";
+import User from "../../../../models/Users";
 import bcrypt from "bcryptjs"
 
 export default async function handler(req, res) {
@@ -16,9 +16,10 @@ export default async function handler(req, res) {
             if(existingUser){
                 return res.status(409).json({message: "User already exists"})
             }
+            const hashedPassword = await bcrypt.hash(password, 5)
 
             console.log("creating new user...");
-            const newUser = await User.create({firstname, lastname, email, password})
+            const newUser = await User.create({firstname, lastname, email, password: hashedPassword })
             console.log("New User Created", newUser);
 
             res.status(201).json({

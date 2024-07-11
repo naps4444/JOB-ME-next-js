@@ -27,7 +27,7 @@ const Card = () => {
                 <hr className='mt-4'/>
                 <div className='flex items-center gap-4 mt-4'>
                     <div className='flex justify-center items-center p-2 rounded shadow-md'>
-                        <Image src="/gmaillogo.png" width={35} height={55} alt='gmail logo' />
+                        <Image src="/gmaillogo.png" width={35} height={55} alt='gmail logo' className='w-auto h-auto' />
 
                     </div>
                     <div>

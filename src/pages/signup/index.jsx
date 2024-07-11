@@ -29,7 +29,7 @@ const onSubmit = async (data)=>{
       password: data.password
     }
     console.log(formData);
-    const res = await fetch("api/authuser", {
+    const res = await fetch("api/auth/signup", {
       method:"POST",
       headers:{
         "Content-Type": "application/json"
@@ -37,7 +37,7 @@ const onSubmit = async (data)=>{
       body: JSON.stringify(formData)
     })
     console.log(res);
-
+    setLoading(false)
     if(res.status === 409){
       setFormError("User already exist")
       setLoading(false)
@@ -88,22 +88,21 @@ const password = watch("password")
   return (
     <div className="sign-bg  flex justify-center items-center mx-auto py-10 ">
       <Toaster
-            position='top-center'
-            
+            position='top-center'            
             />
       <div className='bg-[#ffffffe7] w-full md:w-8/12 lg:w-6/12  py-5 rounded-3xl'>
       <div className=' w-10/12 md:w-9/12 lg:w-10/12 xl:w-8/12 mx-auto mt-5 my-auto'>
 
       <div className='flex justify-center mx-auto'>
           <Link href="/" >
-          <Image src="/JOBMEN.svg" width={70} height={70} alt=' jobme logo' />
+          <Image src="/jobme.png" width={85} height={75} alt=' jobme logo' className='w-auto h-auto' />
           </Link>
 
         </div>
 
-          <div className='text-center mt-5'>
+          <div className='text-center mt-3'>
             <h1 className='text-lg font-semibold'>Sign Up!</h1>
-            <h2 className='text-base font-medium mt-2'>Register to hit your dream job!</h2>
+            <h2 className='text-base '>Register to hit your dream job!</h2>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className=' flex flex-col mt-7 gap-6'>
@@ -153,7 +152,7 @@ const password = watch("password")
         
             <div className='w-full border rounded-lg bg-transparent'>
             <input {...register("email",
-                 {required: true,
+                 {required: "Email address is required",
                   pattern: { 
                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                     messsage: " Please enter a valid email address "
@@ -226,7 +225,7 @@ const password = watch("password")
               </div>
             </div> */}
 
-            <button type='sumbmit' className='btn-color rounded-lg text-white mt-2 py-1 w-full hover:bg-white hover:text-black'> { loading ? "Loading..." : "Sign Up" } </button>
+            <button type='sumbmit' className='btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black'> { loading ? "Loading..." : "Sign Up" } </button>
           </form>
 
 

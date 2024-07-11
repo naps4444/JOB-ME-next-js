@@ -14,7 +14,7 @@ const Navbar = () => {
           <div className="flex space-x-7">
             <div>
               <Link href="/" className="flex items-center py-4 px-2 ">
-              <Image src="/JOBME.png" width={75} height={100} alt='logo' />
+              <Image src="/JOBME.png" width={75} height={100} alt='logo' className='w-auto h-auto' />
               </Link>
             </div>
           </div>

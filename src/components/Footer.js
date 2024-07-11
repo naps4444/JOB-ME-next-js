@@ -10,7 +10,7 @@ const Footer = () => {
     <div className='left flex flex-col gap-2'>
         <div className='logo'>
               <Link href="/" className="flex items-center py-4 px-2 ">
-              <Image src="/JOBME.png" width={75} height={100} alt='logo'  />
+              <Image src="/JOBME.png" width={75} height={100} alt='logo' className='w-auto h-auto'  />
               </Link>
         </div>
 
@@ -20,10 +20,10 @@ const Footer = () => {
             </div>
 
             <div className='flex gap-2'>
-                <Image src="/fiby.png" width={25} height={20} alt='facebook logo'/>
-                <Image src="/linklogo.png" width={25} height={20} alt='linkedin logo'/>
-                <Image src="/instanta.png" width={25} height={20} alt='instagram logo'/>
-                <Image src="/xster.png" width={25} height={20} alt='twitter logo'/>                
+                <Image src="/fiby.png" width={25} height={20} alt='facebook logo' className='w-auto h-auto'/>
+                <Image src="/linklogo.png" width={25} height={20} alt='linkedin logo' className='w-auto h-auto'/>
+                <Image src="/instanta.png" width={25} height={20} alt='instagram logo' className='w-auto h-auto'/>
+                <Image src="/xster.png" width={25} height={20} alt='twitter logo' className='w-auto h-auto'/>                
             </div>
         </div>
 
