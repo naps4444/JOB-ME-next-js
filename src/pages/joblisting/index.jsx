@@ -1,14 +1,14 @@
 import React from 'react'
 import DropDown from '../HomeComponent/DropDown'
-import Card from '../homecomponent/Card'
+import Card from '../HomeComponent/Card'
 
 const JobListing = () => {
   return (
     <div>
-      <div className=''>
+      <div>
         <DropDown/>
 
-        <div className=''>
+        <div>
           <Card/>
         </div>
       </div>
