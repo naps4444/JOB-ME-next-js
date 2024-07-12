@@ -20,10 +20,10 @@ const Footer = () => {
             </div>
 
             <div className='flex gap-2'>
-                <Image src="/fiby.png" width={25} height={20} alt='facebook logo' className='w-auto h-auto'/>
-                <Image src="/linklogo.png" width={25} height={20} alt='linkedin logo' className='w-auto h-auto'/>
-                <Image src="/instanta.png" width={25} height={20} alt='instagram logo' className='w-auto h-auto'/>
-                <Image src="/xster.png" width={25} height={20} alt='twitter logo' className='w-auto h-auto'/>                
+                <Image src="/fiby.png" width={25} height={20} alt='facebook logo' className='w-6 h-auto'/>
+                <Image src="/linklogo.png" width={25} height={20} alt='linkedin logo' className='w-6 h-auto'/>
+                <Image src="/instanta.png" width={25} height={20} alt='instagram logo' className='w-6 h-auto'/>
+                <Image src="/xster.png" width={25} height={20} alt='twitter logo' className='w-6 h-auto'/>                
             </div>
         </div>
 

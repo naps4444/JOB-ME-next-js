@@ -8,7 +8,7 @@ const JobListing = () => {
       <div className=''>
         <DropDown/>
 
-        <div>
+        <div className=''>
           <Card/>
         </div>
       </div>

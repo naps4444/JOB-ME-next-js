@@ -225,7 +225,7 @@ const password = watch("password")
               </div>
             </div> */}
 
-            <button type='sumbmit' className='btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black'> { loading ? "Loading..." : "Sign Up" } </button>
+            <button type='sumbmit' className='btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black'> { loading ? "Signing Up..." : "Sign Up" } </button>
           </form>
 
 

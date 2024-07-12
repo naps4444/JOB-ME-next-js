@@ -160,6 +160,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Login = () => {
   const {
@@ -169,9 +170,12 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const [loading, setLoading] = useState(false)
+
   const router = useRouter()
 
   const onSubmit = async (data) => {
+    setLoading(true)
     try {
       console.log(data);
       const res = await fetch('api/auth/signin', {
@@ -181,8 +185,10 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       })
+      setLoading(false)
       const responseData = await res.json();
       if(res.ok){
+        setLoading(false)
         console.log('login successful:', responseData);
         localStorage.setItem('token', responseData.token)
 
@@ -192,9 +198,9 @@ const Login = () => {
             sameSite: 'strict'
         })
 
-        router.push('/')
+        router.push('/joblisting')
         reset()
-      }else{
+      }else{  
         console.error("login failed:", responseData);
       }
     } catch (error) {
@@ -264,9 +270,7 @@ const Login = () => {
             <button
               type="submit"
               className="btn-color rounded-lg text-white mt-2 py-1 w-full hover:bg-white hover:text-black"
-            >
-              Log In
-            </button>
+            >{ loading ? "Logging In..." : "Log In" }</button>
           </form>
           <div className="flex flex-col mt-8 gap-2 justify-center items-center">
             <div>
