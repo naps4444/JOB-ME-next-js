@@ -6,19 +6,14 @@ const JobListing = () => {
   return (
     <div>
       <div className='grad-div h-12'>
-        <span className='hidden'>jjjj</span>
+        <span className='hidden'>not empty</span>
 
       </div>
       <div>
-        <DropDown/>
-
-        <div>
+        <DropDown/>   
+      </div>
+      <div>
           <JobApplyCard/>
-        
-
-
-
-        </div>
       </div>
       
     </div>
