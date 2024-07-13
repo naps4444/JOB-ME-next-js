@@ -329,7 +329,7 @@ const SignUp = () => {
         <div className='w-10/12 md:w-9/12 lg:w-10/12 xl:w-8/12 mx-auto mt-5 my-auto'>
           <div className='flex justify-center mx-auto'>
             <Link href="/">
-              <Image src="/jobme.png" width={75} height={75} alt='jobme logo' className='w-16 h-auto' />
+              <Image src="/JOBMEN.svg" width={75} height={75} alt='jobme logo' className='w-16 h-auto' />
             </Link>
           </div>
           <div className='text-center mt-3'>
