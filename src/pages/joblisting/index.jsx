@@ -1,6 +1,6 @@
 import React from 'react'
 import DropDown from '../HomeComponent/DropDown'
-import JobApplyCard from '../homecomponent/JobListingCard'
+import JobApplyCard from '../HomeComponent/JobApplyCard'
 
 const JobListing = () => {
   return (
@@ -14,6 +14,7 @@ const JobListing = () => {
       </div>
       <div>
           <JobApplyCard/>
+          
       </div>
       
     </div>
