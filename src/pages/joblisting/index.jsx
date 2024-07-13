@@ -1,6 +1,6 @@
 import React from 'react'
 import DropDown from '../HomeComponent/DropDown'
-import JobApplyCard from '../HomeComponent/JobListingCard'
+import JobApplyCard from '../homecomponent/JobListingCard'
 
 const JobListing = () => {
   return (
