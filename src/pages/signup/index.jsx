@@ -95,7 +95,7 @@ const password = watch("password")
 
       <div className='flex justify-center mx-auto'>
           <Link href="/" >
-          <Image src="/jobme.png" width={85} height={75} alt=' jobme logo' className='w-auto h-auto' />
+          <Image src="/jobme.png" width={75} height={75} alt=' jobme logo' className='w-16 h-auto' />
           </Link>
 
         </div>

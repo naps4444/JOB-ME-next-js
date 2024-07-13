@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const HowItWorks = () => {
   return (
-    <div className='w-11/12 mx-auto'>
+    <div className='w-10/12 lg:w-11/12 mx-auto'>
         <div className=' container text-center mx-auto mt-10'>
         <h1 className='text-xl font-semibold'>How It Works?</h1>
 

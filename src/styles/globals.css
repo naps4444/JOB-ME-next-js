@@ -80,6 +80,6 @@
 .border-color{
   border: 0cqmin;
 }
-/* .grad-div{
-  background-color: ;
-} */
+.grad-div{
+  background: linear-gradient(to right, #0DCAF0, #0AA0BE, #0DC8EE, #07748A );
+}

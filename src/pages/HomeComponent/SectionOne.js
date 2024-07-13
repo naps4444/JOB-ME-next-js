@@ -5,13 +5,13 @@ const SectionOne = () => {
   return (
 
     <div className='bg-[#F5F3F3] '>
-    <div className='container mx-auto pt-7 pb-7 w-11/12'>
+    <div className='container mx-auto pt-7 pb-7 w-10/12 lg:w-11/12'>
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-20'>
             <div className=' hidden lg:block ml-0 w-full'>
                 <Image  src="/dmimg1.png" width={400} height={100} alt='4 developers coding'  className='xl:w-full ml-0 '/>
             </div>
 
-            <div className='w-5/6 mx-auto lg:mr-0'>
+            <div className='w-full mx-auto lg:mr-0'>
                 <h3 className='font-bold lg:w-9/12 text-lg'>Find Millions of Job
                 Opportunities Right for You!</h3>
 
@@ -26,7 +26,7 @@ const SectionOne = () => {
         </div>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-20 mt-10'>
-            <div className=' w-5/6 mx-auto lg:mr-0'>
+            <div className=' w-full mx-auto lg:mr-0'>
                 <h3 className='font-bold lg:w-4/6 text-lg'>
                 Looking to be one of the World’s Best
                 Talents?

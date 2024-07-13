@@ -5,7 +5,7 @@ const Cvcomponent = () => {
   return (
     <div className='bg-[#DBF7FD] flex justify-center items-center py-10'>
       
-    <div className='mx-auto w-11/12 container'>
+    <div className='mx-auto lg:w-11/12 w-10/12 container'>
     <div className='  grid grid-cols-1 lg:grid-cols-2 items-center'>
         <div className=' mx-auto'>
             <h1 className='text-xl  md:text-2xl md:w-8/12 lg:w-full xl:w-8/12 font-semibold '>Get Jobs that match your Qualifications and Skill Set</h1>
