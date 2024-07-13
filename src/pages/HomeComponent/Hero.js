@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import DropDown from './DropDown'
 
+
 const Hero = () => {
   return (
     <div className='  section-11 h-28 w-full   md:h-64 lg:h-80 md:mt-0 flex flex-col justify-center'>
@@ -18,7 +19,7 @@ const Hero = () => {
 
 
         <div className='hidden lg:block mt-5  lg:mt-16'>
-        <DropDown/>            
+        <DropDown/>         
         </div>       
 
         
