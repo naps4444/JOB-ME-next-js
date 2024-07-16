@@ -13,4 +13,4 @@ const JobDetailPage = () => {
   )
 }
 
-export default index
+export default JobDetailPage
