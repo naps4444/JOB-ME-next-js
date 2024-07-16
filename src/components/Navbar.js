@@ -117,6 +117,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Cookies from 'js-cookie';
 import logout from '../../utils/logout';
+import { FaUserAlt } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
+import { RxDividerVertical } from "react-icons/rx";
+import ProfileModal from './ProfileModal';
+import LogOutModal from './LogOutModal';
 
 const Navbar = () => {
   const [userToken, setUserToken] = useState(null);
@@ -145,6 +150,10 @@ const Navbar = () => {
   const handleLinkClick = () => {
     setIsMenuOpen(false);
   };
+  const [show, setShow] = useState(false)
+  const toggleShow = ()=>{
+    setShow(!show)
+  }
 
   return (
     <div className='sticky top-0 z-50' ref={menuRef}>
@@ -158,18 +167,73 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            <div className="hidden md:flex items-center space-x-1 gap-4">
-              <Link href="/" className="py-4 px-2 text-black text-hover transition duration-300">Home</Link>
+            <div className="hidden lg:flex items-center space-x-1 gap-4">
+            {userToken ? (
+ null 
+) : (
+  <Link href="/" className="py-4 px-2 text-black text-hover transition duration-300">Home</Link>
+  
+)}
+              
               <Link href="/joblisting" className="py-4 px-2 text-black text-hover transition duration-300">Job Listings</Link>
+              
+{userToken ? (
+  <Link href="/appliedjobs" className="py-4 px-2 text-black text-hover transition duration-300">Applied Jobs</Link>  
+) : (
+  null
+  
+)}
               <Link href="/contacts" className="py-4 px-2 text-black text-hover transition duration-300">Contact Us</Link>
             </div>
 
             {userToken ? (
-              <button onClick={logout} className='hidden lg:block'>
-                LOGOUT
-              </button>
+              <div className='hidden lg:block'>
+                <div className='grid justify-center bg-white py-1 border border-b-slate-950 w-[125px] rounded-3xl'>
+        <div className='grid grid-cols-3 w-16 -ml-2 gap- justify-center items-center mx-auto'>
+          
+          <Link onClick={toggleShow} href="">
+          
+            <div className=''>
+            <FaUserAlt size={27}/>
+            </div>
+            {show && <div className='absolute' style={{right: '0px', top: '0px'}}>
+              <ProfileModal />
+              
+            </div>}
+            </Link>
+            
+
+
+            <div className='flex flex-col justify-center items-center ml-3'>
+            
+            <RxDividerVertical height={100}/>
+
+            <RxDividerVertical height={100} className='-mt-2'/>
+
+            <RxDividerVertical height={100} className='-mt-2'/>
+
+            <RxDividerVertical height={100} className='-mt-2'/> </div>
+
+
+        <Link onClick={toggleShow} href="">
+            <div  className='ml-2' >
+            <MdLogout size={30} color='#F31313'/>
+            </div>
+            {show && <div className='absolute' style={{right: '0px', top: '0px'}}>
+              <LogOutModal/>
+              
+            </div>}
+
+            </Link>
+
+
+        </div>
+    </div>
+
+              </div>
+              
             ) : (
-              <div className='hidden md:flex justify-center gap-3'>
+              <div className='hidden lg:flex justify-center gap-3'>
                 <Link href="/login" className='flex justify-center items-center w-16 h-10 my-auto rounded-lg btn-color text-white hover:bg-white hover:text-black ease-in-out duration-500'>
                   Log In
                 </Link>
@@ -179,7 +243,7 @@ const Navbar = () => {
               </div>
             )}
 
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <button className="outline-none mobile-menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <svg className="w-6 h-6 text-gray-500 hover:text-gray-900"
                   fill="none"
@@ -198,7 +262,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
+        <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
           <Link href="/" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Home</Link>
           <Link href="/joblisting" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Job Listings</Link>
           <Link href="/contacts" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Contact Us</Link>
@@ -220,4 +284,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
 

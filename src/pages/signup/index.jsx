@@ -304,6 +304,7 @@ const SignUp = () => {
       if (res.ok) {
         setLoading(false);
         toast.success("Registration Successful");
+        console.log(formData);
         reset();
         setFormError("");
       } else {

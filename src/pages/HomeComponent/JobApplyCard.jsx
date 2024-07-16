@@ -5,15 +5,15 @@ import Image from 'next/image';
 
 const JobApplyCard = () => {
   return (
-    <div className='container h-96 flex items-center'>
+    <div className='container w-11/12 mx-auto flex items-center'>
         <div className='rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-72 lg:w-full p-5 mx-auto mt-5 '>
-            <div className=''>
-                <div>
-                <div className='flex justify-center items-center p-2 w-10 rounded shadow-md'>
-                        <Image src="/gmaillogo.png" width={35} height={55} alt='gmail logo' className='w-auto h-auto' />
+            <div className='flex justify-between'>
+                <div className='flex gap-2 items-center'>
+                <div className='flex justify-center items-center py-3 w-14 rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] '>
+                        <Image src="/gmaillogo.png" width={45} sizes='2' height={55} alt='gmail logo' className='w-auto h-auto' />
 
                     </div>
-                <div>
+                <div className='flex flex-col gap-2'>
                     <h1 className='text-xl font-semibold'>Digital Marketer</h1>
                     <p>Google</p>
                 </div>
@@ -26,8 +26,8 @@ const JobApplyCard = () => {
 
 
 
-                <div className='flex justify-between mt-4'>
-                    <div className='rounded  px-1 py-1 bg-[#0DCAF01F]'>
+                <div className='flex flex-col '>
+                    <div className='rounded  px-1 py-1 bg-[#0DCAF01F] flex justify-center items-center w-14'>
                         <p className='text-[#0dcaf0] text-xs'>Full Time</p>
                     </div>
 
@@ -41,11 +41,11 @@ const JobApplyCard = () => {
 
 
 
-                <hr className='mt-4 lg:hidden'/>
+                
 
 
 
-                <div className='flex items-center gap-4 mt-4'>
+                <div className='flex flex-col gap-4'>
                     
                     
                         
@@ -60,12 +60,19 @@ const JobApplyCard = () => {
                     </div>
                         
                     </div>
-                </div>
-                <div className='mt-4'>
-                    <button className='btn-color text-white p-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>
+
+
+
+                    <div className='flex items-center w-32'>
+                    <button className='btn-color w-full text-white p-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>
                         Apply Now
                     </button>
                 </div>
+
+
+
+                </div>
+                
             </div>
         </div>
   )
