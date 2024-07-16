@@ -151,8 +151,15 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
   const [show, setShow] = useState(false)
+
+  const [show1, setShow1] = useState(false)
+
+
   const toggleShow = ()=>{
     setShow(!show)
+  }
+  const toggleShow1 = ()=>{
+    setShow1(!show1)
   }
 
   return (
@@ -215,11 +222,11 @@ const Navbar = () => {
             <RxDividerVertical height={100} className='-mt-2'/> </div>
 
 
-        <Link onClick={toggleShow} href="">
+        <Link onClick={toggleShow1} href="">
             <div  className='ml-2' >
             <MdLogout size={30} color='#F31313'/>
             </div>
-            {show && <div className='absolute' style={{right: '0px', top: '0px'}}>
+            {show1 && <div className='absolute' style={{right: '0px', top: '0px'}}>
               <LogOutModal/>
               
             </div>}
