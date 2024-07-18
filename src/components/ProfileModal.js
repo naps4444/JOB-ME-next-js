@@ -36,17 +36,17 @@ const ProfileModal = () => {
             <div className="bg-white pb-4 pt-5 sm:p-6 sm:pb-4 w-full flex flex-col gap-3">
               <h1 className='mx-auto text-center font-semibold text-xl'>Account Information</h1>
 
-              <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-2 hover:text-[#0dcaf0] '>
                 <FaRegUser />
                 <Link href="" >My Profile</Link>
               </div>
 
-              <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-2 hover:text-[#0dcaf0]'>
                 <MdOutlineSettings />
                 <Link href="" >Settings</Link>
               </div>
 
-              <div className='flex items-center gap-2'>
+              <div className='flex items-center gap-2 hover:text-[#0dcaf0]'>
               <RxQuestionMarkCircled />
                 <Link href="" >Help Centre</Link>
               </div>

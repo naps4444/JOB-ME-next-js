@@ -204,7 +204,7 @@ const Navbar = () => {
             <FaUserAlt size={27}/>
             </div>
             {show && <div className='absolute' style={{right: '0px', top: '0px'}}>
-              <ProfileModal />
+              <Image src="/profileICON.svg" width="20" height="20" alt=''/>
               
             </div>}
             </Link>
@@ -270,8 +270,31 @@ const Navbar = () => {
           </div>
         </div>
         <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
-          <Link href="/" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Home</Link>
+          
+
+          {userToken ? (
+ null 
+) : (
+  <Link href="/" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Home</Link>
+  
+)}
+
+
+
           <Link href="/joblisting" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Job Listings</Link>
+
+
+          {userToken ? (
+  <Link href="/appliedjobs" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Applied Jobs</Link>  
+) : (
+  null
+  
+)}
+
+
+
+
+
           <Link href="/contacts" className="block py-2 px-4 text-sm text-black text-hover" onClick={handleLinkClick}>Contact Us</Link>
 
           {userToken ? (

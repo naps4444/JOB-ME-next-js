@@ -63,8 +63,8 @@ const JobApplyCard = () => {
 
 
 
-                    <div className='flex items-center w-32'>
-                    <button className='btn-color w-full text-white p-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>
+                    <div className='flex  w-36'>
+                    <button className='btn-color h-10  text-white p-2 px-5 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>
                         Apply Now
                     </button>
                 </div>
