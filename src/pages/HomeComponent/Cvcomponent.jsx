@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Cvcomponent = () => {
   return (
@@ -10,9 +11,13 @@ const Cvcomponent = () => {
         <div className=' mx-auto'>
             <h1 className='text-xl  md:text-2xl md:w-8/12 lg:w-full xl:w-8/12 font-semibold '>Get Jobs that match your Qualifications and Skill Set</h1>
 
-            <p className='mt-10 md:w-11/12 lg:w-full'>Lorem ipsum dolor sit amet consectetur. Dolor euismod mattis nulla aliquam a. In ac in ornare donec consectetur. Nam semper gravida enim dolor velit aliquam ut ac. </p>
+            <p className='mt-10 mb-10 md:w-11/12 lg:w-full'>Lorem ipsum dolor sit amet consectetur. Dolor euismod mattis nulla aliquam a. In ac in ornare donec consectetur. Nam semper gravida enim dolor velit aliquam ut ac. </p>
 
-            <button className='btn-color text-white mt-5 py-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>Upload Your CV</button>
+            <Link href="/jobapplication" className='btn-color text-white mt-5 py-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500' >
+            Upload Your CV
+            </Link>
+
+          
         </div>
 
         <div className='hidden lg:block lg:w-full '>
