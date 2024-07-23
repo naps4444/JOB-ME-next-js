@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Cvcomponent = () => {
   return (
-    <div className='bg-[#DBF7FD] flex justify-center items-center py-10'>
+    <div className='bg-[#DBF7FD] flex justify-center items-center py-8'>
       
     <div className='mx-auto lg:w-11/12 w-10/12 container'>
     <div className='  grid grid-cols-1 lg:grid-cols-2 items-center'>
