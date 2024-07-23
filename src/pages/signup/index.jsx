@@ -271,10 +271,12 @@ import { useForm } from 'react-hook-form';
 import { IoEye } from "react-icons/io5";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import toast, { Toaster } from 'react-hot-toast';
+import Loader from '@/components/loader/Loader';
 
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors }, reset, watch } = useForm();
   const [loading, setLoading] = useState(false);
+  
   const [formError, setFormError] = useState("");
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -387,7 +389,13 @@ const SignUp = () => {
               {errors.confrimPassword && errors.confrimPassword.type === "required" && <span className='text-red-500 py-1 pl-2'>Confirm Password is required</span>}
               {errors.confrimPassword && errors.confrimPassword.type === "validate" && <span className='text-red-500 py-1 pl-2'>The passwords do not match</span>}
             </div>
-            <button type='submit' className='btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black'>{loading ? "Signing Up..." : "Sign Up"}</button>
+            <button type='submit' className=' btn-color flex justify-center items-center rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black'>
+              <div className='flex justify-center items-center'>
+              {  loading  ? <Loader text="Signing up..."/> : <p className='text-base'>Sign Up</p>
+            
+            }
+            </div>
+            </button>
           </form>
           <div className='flex flex-col mt-8 gap-2 justify-center items-center'>
             <div>

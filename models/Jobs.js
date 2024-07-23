@@ -3,6 +3,7 @@ import mongoose, { Schema, models } from 'mongoose';
 const JobSchema = new Schema({
     title: { type: String, required: true, trim: true },
     company: { type: String, required: true, trim: true },
+    logoUrl: {type: String, required: true},
     description: { type: String, required: true, trim: true },
     employmentType: { type: String, required: true, trim: true },
     location: { type: String, required: true, trim: true },
