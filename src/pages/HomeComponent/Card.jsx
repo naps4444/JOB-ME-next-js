@@ -1,12 +1,18 @@
+"use client"
 import React from 'react';
 import { GoClock } from "react-icons/go";
 import { SlLocationPin } from "react-icons/sl";
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Card = ({ job }) => {
+  const router = useRouter()
     if (!job) {
         return null;
     }
+    console.log(job._id);
+
 
   return (
     <div className='container h-96 flex items-center'>
@@ -43,9 +49,9 @@ const Card = ({ job }) => {
             </div>
           </div>
           <div className='mt-4'>
-            <button className='btn-color text-white p-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>
+            <Link href={`/joblisting/${job._id}`} className='btn-color text-white p-2 px-3 rounded-lg hover:bg-white hover:text-black ease-in-out duration-500'>
               Apply Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

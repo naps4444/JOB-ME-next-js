@@ -161,6 +161,7 @@ import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Loader from "@/components/loader/Loader";
 
 const Login = () => {
   const {
@@ -269,8 +270,15 @@ const Login = () => {
 
             <button
               type="submit"
-              className="btn-color rounded-lg text-white mt-2 py-1 w-full hover:bg-white hover:text-black"
-            >{ loading ? "Logging In..." : "Log In" }</button>
+              className="btn-color rounded-lg text-white mt-2 py-2 w-full hover:bg-white hover:text-black"
+            >
+              <div className='flex justify-center items-center mx-auto'>
+              {  loading  ? <Loader text="Logging in..."/> : <p className='text-base'>Log In</p>
+            
+            }
+            </div>
+            </button>
+
           </form>
           <div className="flex flex-col mt-8 gap-2 justify-center items-center">
             <div>

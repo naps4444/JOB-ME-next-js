@@ -1,8 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Card from '../HomeComponent/Card'
+import Card from '@/pages/HomeComponent/Card'
+import { useRouter } from 'next/router';
+import { formatDistanceToNow } from 'date-fns';
+import Loader from '@/components/loader/Loader';
+import Link from 'next/link';
 
-const index = () => {
+export default function JobDetail() {
+  const [job, setJob] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+  const { id } = router.query;
+
+  const fetchJob = async () => {
+    try {
+      const response = await fetch(`/api/jobs/${id}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch job');
+      }
+      const data = await response.json();
+      setJob(data.data);
+      console.log(job);
+    } catch (error) {
+      setError(err.message);      
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchJob();
+    }
+  }, [id]);
+
+
+  if (loading) return <div className='flex justify-center items-center mx-auto py-20'><Loader/></div>  ;
+  if (error) return <div>Error: {error}</div>;
+  if (!job) return <div>Job not found</div>;
+
+
+  const postedTime = job?.createdAt ? formatDistanceToNow(new Date(job.createdAt),
+  { addSuffix: true}) : " "
+
+
+
+
   return (
     <div className='w-11/12 mx-auto  '>
       <div className=' px-2 py-2 flex flex-col lg:flex-row gap-24'>
@@ -13,11 +57,11 @@ const index = () => {
         <div className='bg-[#DBF7FD] rounded-md px-3 lg:px-6 py-8 lg:mt-3'>
           <div>
             <div className='flex justify-center items-center bg-[#FFFFFF]  w-16 h-16 rounded-sm shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>            
-            <Image src="/gmaillogo.png" width={25} height={25} className='w-12' alt=''/>            
+            <Image src={job.logoUrl} width={25} height={25} className='w-12' alt=''/>            
             </div>
 
             <div className='mt-2'>            
-            <h1 className='text-lg lg:text-2xl font-semibold'>Digital Marketer</h1>
+            <h1 className='text-lg lg:text-2xl font-semibold'>{job.title}</h1>
             </div>
 
             <div className='mt-5'>
@@ -40,31 +84,31 @@ const index = () => {
               <div className='flex justify-start items-center font-semibold gap-2'>
                 <Image src="/profilecheck.svg" width={20} height={20} alt=''/>
                 <p>
-                Employment Type: <span className='text-[#0DCAF0]'>Full Time</span>
+                Employment Type: <span className='text-[#0DCAF0]'>{job.employmentType}</span>
                 </p>
               </div>
               <div className='flex justify-start items-center font-semibold gap-2'>
               <Image src="/loc-img.svg" width={20} height={20} alt=''/>
                 <p>
-                Location: <span className='text-[#0DCAF0]'>United Kingdom</span>
+                Location: <span className='text-[#0DCAF0]'>{job.location}</span>
                 </p>
               </div>
               <div className='flex justify-start items-center font-semibold gap-2'>
               <Image src="/time-img.svg" width={20} height={20} alt='' />
                 <p>
-                Date Posted: <span className='text-[#0DCAF0]'>13th April, 2024.</span>
+                Date Posted: <span className='text-[#0DCAF0]'>{postedTime}</span>
                 </p>
               </div>
               <div className='flex justify-start items-center font-semibold gap-2'>
               <Image src="/work-img.svg" width={20} height={20} alt='' />
                 <p>
-                Experience: <span className='text-[#0DCAF0]'>3+ Years</span>
+                Experience: <span className='text-[#0DCAF0]'>{job.experience}</span>
                 </p>
               </div>
               <div className='flex justify-start items-center font-semibold gap-2'>
               <Image src="/dollar-img.svg" width={20} height={20} alt='' />
                 <p>
-                Salary: <span className='text-[#0DCAF0]'>30k - 35k per annum</span>
+                Salary: <span className='text-[#0DCAF0]'>{job.salary}</span>
                 </p>
               </div>
 
@@ -85,9 +129,8 @@ const index = () => {
       <div className='lg:w-8/12'>
       <div>
         <h1 className='text-2xl font-semibold'>Job Description:</h1>
-        <p className='mt-5 lg:text-lg'>Lorem ipsum dolor sit amet consectetur. Arcu in amet pellentesque magna integer turpis. Tortor ut sollicitudin varius vitae lectus ac elementum vel. Viverra pellentesque risus tristique mauris metus. Imperdiet purus nulla mi consequat nulla.</p>
-        <p className='lg:text-lg'>Lorem ipsum dolor sit amet consectetur. Arcu in amet pellentesque magna integer turpis. Tortor ut sollicitudin varius vitae lectus ac elementum vel. Viverra pellentesque risus tristique mauris metus. Imperdiet purus nulla mi consequat nulla.</p>
-
+        <p className='mt-5 lg:text-lg'>{job.description}</p>
+        
       </div>
 
 
@@ -154,9 +197,9 @@ const index = () => {
 
 
       <div className='mt-5'>
-        <button className='bg-[#0DCAF0] text-white hover:bg-[white] hover:text-black py-2 px-5 rounded-lg'>
+        <Link href="/jobapplication" className='bg-[#0DCAF0] text-white hover:bg-[white] hover:text-black py-2 px-5 rounded-lg'>
           Apply Now
-        </button>
+        </Link>
       </div>
 
 
@@ -182,5 +225,3 @@ const index = () => {
     </div>
   )
 }
-
-export default index

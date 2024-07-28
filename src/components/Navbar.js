@@ -121,7 +121,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import ProfileModal from './ProfileModal';
-import LogOutModal from './LogOutModal';
+import LogOutModal from './LogOutModal'
 
 const Navbar = () => {
   const [userToken, setUserToken] = useState(null);
@@ -163,7 +163,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='sticky top-0 z-50' ref={menuRef}>
+    <div className='sticky top-0 z-50 font-jost' ref={menuRef}>
       <nav className="bg-[#FFFFFFCC] py-1 lg:py-2 shadow-lg">
         <div className="w-11/12 container mx-auto">
           <div className="flex justify-between items-center">
@@ -204,7 +204,7 @@ const Navbar = () => {
             <FaUserAlt size={27}/>
             </div>
             {show && <div className='absolute' style={{right: '0px', top: '0px'}}>
-              <Image src="/profileICON.svg" width="20" height="20" alt=''/>
+              <ProfileModal/>
               
             </div>}
             </Link>

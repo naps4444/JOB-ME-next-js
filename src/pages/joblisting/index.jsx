@@ -86,8 +86,10 @@
 import React, { useState, useEffect } from 'react';
 import DropDown from '../HomeComponent/DropDown';
 import JobApplyCard from '../HomeComponent/JobApplyCard';
-
 import Card from '../HomeComponent/Card';
+import Loader from '@/components/loader/Loader';
+import withAuth from '@/components/Hoc/withAuth';
+
 
 
 export async function getServerSideProps() {
@@ -100,6 +102,7 @@ export async function getServerSideProps() {
       jobs: data.data || [], // Ensure jobs is not undefined
     },
   };
+  
 }
 
 const JobListing = ({ jobs }) => {
@@ -112,7 +115,11 @@ const JobListing = ({ jobs }) => {
   }, [jobs]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+    <div className='mx-auto flex justify-center items-center p-24'>
+      <Loader />
+    </div>
+    );
   }
 
   return (
@@ -153,4 +160,4 @@ const JobListing = ({ jobs }) => {
   );
 };
 
-export default JobListing;
+export default withAuth (JobListing);

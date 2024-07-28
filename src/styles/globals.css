@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  font-family: 'Jost', 'sans-serif';
+}
 .btn-color{
   background-color: #0dcaf0;
 }
