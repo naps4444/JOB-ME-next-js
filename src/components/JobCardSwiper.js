@@ -58,7 +58,7 @@ const JobCardSwiper = ({ recentJobs }) => {
                 </div>
               </div>
               <div className='mt-7'>
-                <Link href={`/joblist/${job._id}`} className='btn-color text-white p-2 px-6 rounded-lg hover:bg-[#01c0e6] ease-in-out duration-500'>
+                <Link href={`/joblisting/${job._id}`} className='btn-color text-white p-2 px-6 rounded-lg hover:bg-[#01c0e6] ease-in-out duration-500'>
                   Apply Now
                 </Link>
               </div>

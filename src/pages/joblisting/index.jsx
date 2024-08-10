@@ -175,7 +175,7 @@ const Joblisting = () => {
                       </div>
                     </div>
                     <Link
-                      href="/joblisting"
+                      href={`/joblisting/${job._id}`}
                       className="btn w-20 bg-[#0dcaf0] hover:bg-cyan-600 mx-auto rounded-md p-2 text-white md:w-[100px] lg:text-xl "
                     >
                       Apply Now
