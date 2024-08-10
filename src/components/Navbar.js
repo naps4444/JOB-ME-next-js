@@ -269,7 +269,12 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2`}>
+
+
+
+
+
+        <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} mb-2 md:px-7`}>
           
 
           {userToken ? (

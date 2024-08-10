@@ -1,6 +1,8 @@
+
 import mongoose from "mongoose";
 
 const JobApplicationSchema = new mongoose.Schema(
+  
   {
     jobId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -49,7 +51,7 @@ const JobApplicationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Add this line to exclude the resume field by default
+
 JobApplicationSchema.set('toJSON', {
   transform: function (doc, ret, options) {
     delete ret.resume;

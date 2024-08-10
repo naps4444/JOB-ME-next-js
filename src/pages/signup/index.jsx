@@ -173,6 +173,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from '@/components/loader/Loader';
+import Cookies from 'js-cookie';
 
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors }, reset, watch } = useForm();
@@ -212,6 +213,8 @@ const SignUp = () => {
         console.log(formData);
         reset();
         setFormError("");
+
+        Cookies.set("lastName", responseData.user.lastname);
 
         router.push('/login');
         

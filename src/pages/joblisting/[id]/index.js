@@ -1,227 +1,216 @@
-import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
-import Card from '@/pages/HomeComponent/Card'
+"use client"
+import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { formatDistanceToNow } from 'date-fns';
 import Loader from '@/components/loader/Loader';
 import Link from 'next/link';
+import useFetch from '../../../../hooks/useFetch';
+import { GoClock } from 'react-icons/go';
+import { SlLocationPin } from 'react-icons/sl';
+import Related from '@/components/Related';
+import Cookies from 'js-cookie';
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('../../../components/Hoc/MapComponent'), {
+  ssr: false
+});
 
-export default function JobDetail() {
-  const [job, setJob] = useState(null);
+
+const JobDetailPage = () => {
+  const [job, setJob] = useState(null)
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const router = useRouter();
-  const { id } = router.query;
 
-  const fetchJob = async () => {
-    try {
-      const response = await fetch(`/api/jobs/${id}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch job');
-      }
-      const data = await response.json();
-      setJob(data.data);
-      console.log(job);
-    } catch (error) {
-      setError(err.message);      
-    } finally {
-      setLoading(false);
+
+  const router = useRouter()
+  const {id} = router.query
+const updateJobId =()=>{
+  Cookies.set("jobId", id)
+}
+const fetchJob = async () => {
+  try {
+    const response = await fetch(`/api/jobs/${id}`, {
+      method: "GET",
+    });
+    if (!response.ok){
+      throw new Error('Failed to fetch job')
     }
-  };
-
-  useEffect(() => {
-    if (id) {
-      fetchJob();
-    }
-  }, [id]);
-
-
-  if (loading) return <div className='flex justify-center items-center mx-auto py-20'><Loader/></div>  ;
-  if (error) return <div>Error: {error}</div>;
-  if (!job) return <div>Job not found</div>;
+    const data = await response.json()
+    setJob(data.data)
+    console.log(job);
+  } catch (error) {
+    setError(error.message)
+  }finally{
+    setLoading(false)
+  }
+}
 
 
-  const postedTime = job?.createdAt ? formatDistanceToNow(new Date(job.createdAt),
-  { addSuffix: true}) : " "
+  useEffect(()=> {
+if (id) {
+  fetchJob()
+}
+  },[id] )
 
 
+  if (loading) return <div className="w-11/12 mx-auto container flex justify-center items-center py-14"><Loader/></div>
+   if (error) return <div className="w-11/12 mx-auto container flex justify-center items-center py-14">{error}</div>;
+    if (!job) return <div className="w-11/12 mx-auto container flex justify-center items-center py-14">Job Not found</div>;
 
+    const postedTime = job?.createdAt ? formatDistanceToNow(new Date(job.createdAt), {
+      addSuffix: true,
+    }) : " "
+
+    const industry = job?.industry
 
   return (
-    <div className='w-11/12 mx-auto  '>
-      <div className=' px-2 py-2 flex flex-col lg:flex-row gap-24'>
-
-
-      
-      <div className='lg:w-5/12'>
-        <div className='bg-[#DBF7FD] rounded-md px-3 lg:px-6 py-8 lg:mt-3'>
-          <div>
-            <div className='flex justify-center items-center bg-[#FFFFFF]  w-16 h-16 rounded-sm shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>            
-            <Image src={job.logoUrl} width={25} height={25} className='w-12' alt=''/>            
-            </div>
-
-            <div className='mt-2'>            
-            <h1 className='text-lg lg:text-2xl font-semibold'>{job.title}</h1>
-            </div>
-
-            <div className='mt-5'>
-              <p className='lg:text-xl'>
-              Lorem ipsum dolor sit amet consectetur. Et ultrices tellus convallis quam. Sed opi commodo proin gravida magnis pretium senectus aliquet.
+    <>
+  
+      <div className="container pt-10 justify-center items-center mx-auto w-11/12 mt-1 mb-6 flex flex-col lg:flex-row gap-10 lg:gap-16 lg:justify-between lg:items-start">
+        <div className="w-full lg:w-3/4">
+          <div className="bg-[#DBF7FD] rounded-lg p-5 lg:p-4">
+            <Image
+              src={job.logoUrl}
+              width={50}
+              height={50}
+              alt="google icon"
+              className="lg:w-16 shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-md p-2 bg-white"
+            />
+            <h4 className="font-semibold  mt-2 text-xl lg:text-2xl">{job.title}</h4>
+            <p className="my-5 text-lg lg:text-xl  ">{job.subTitle}</p>
+            <h5 className="font-semibold text-xl mb-2">Job Information:</h5>
+            <div className="bg-white rounded-lg px-2 lg:px-3 py-3 lg:py-5 shadow-[0_3px_10px_rgb(0,0,0,0.2)] md:w-5/12 lg:w-9/12">
+              <p className="flex justify-start items-center gap-1 font-semibold ">
+                <Image
+                  src="/employment-type.svg"
+                  width={25}
+                  height={25}
+                  alt="person"
+                  className=""
+                />
+                Employment Type:
+                <span className="text-[#0dcaf0] font-normal">
+                  {job.employmentType}
+                </span>
+              </p>
+              <p className="flex justify-start items-center gap-1 font-semibold my-2 lg:my-4">
+                <Image
+                  src="/location.svg"
+                  width={25}
+                  height={25}
+                  alt="location pin"
+                  className=""
+                />
+                Location:
+                <span className="text-[#0dcaf0] font-normal">
+                  {job.location}
+                </span>
+              </p>
+              <p className="flex justify-start items-center gap-1 font-semibold">
+                <Image
+                  src="/date-posted.svg"
+                  width={25}
+                  height={25}
+                  alt="clock"
+                  className=""
+                />
+                Date Posted:
+                <span className="text-[#0dcaf0] font-normal">
+                  {postedTime}
+                </span>
+              </p>
+              <p className="flex justify-start items-center gap-1 font-semibold my-2 lg:my-4">
+                <Image
+                  src="/experience.svg"
+                  width={25}
+                  height={25}
+                  alt="suitcase"
+                  className=""
+                />
+                Experience:
+                <span className="text-[#0dcaf0] font-normal">
+                  {job.experience}
+                </span>
+              </p>
+              <p className="flex justify-start items-center gap-1 font-semibold">
+                <Image
+                  src="/salary.svg"
+                  width={25}
+                  height={25}
+                  alt="dollar"
+                  className=""
+                />
+                Sarary:
+                <span className="text-[#0dcaf0] font-normal">{job.salary}</span>
               </p>
             </div>
-
-
-
           </div>
-
-
-
-
-          <div className='lg:w-[280px] mt-5'>
-            <h1 className='text-lg font-semibold'>Job Information:</h1>
-
-            <div className='bg-[#FFFFFF] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] rounded-lg p-2 lg:px-4 lg:py-3 mt-2 flex flex-col gap-3'>
-              <div className='flex justify-start items-center font-semibold gap-2'>
-                <Image src="/profilecheck.svg" width={20} height={20} alt=''/>
-                <p>
-                Employment Type: <span className='text-[#0DCAF0]'>{job.employmentType}</span>
-                </p>
-              </div>
-              <div className='flex justify-start items-center font-semibold gap-2'>
-              <Image src="/loc-img.svg" width={20} height={20} alt=''/>
-                <p>
-                Location: <span className='text-[#0DCAF0]'>{job.location}</span>
-                </p>
-              </div>
-              <div className='flex justify-start items-center font-semibold gap-2'>
-              <Image src="/time-img.svg" width={20} height={20} alt='' />
-                <p>
-                Date Posted: <span className='text-[#0DCAF0]'>{postedTime}</span>
-                </p>
-              </div>
-              <div className='flex justify-start items-center font-semibold gap-2'>
-              <Image src="/work-img.svg" width={20} height={20} alt='' />
-                <p>
-                Experience: <span className='text-[#0DCAF0]'>{job.experience}</span>
-                </p>
-              </div>
-              <div className='flex justify-start items-center font-semibold gap-2'>
-              <Image src="/dollar-img.svg" width={20} height={20} alt='' />
-                <p>
-                Salary: <span className='text-[#0DCAF0]'>{job.salary}</span>
-                </p>
-              </div>
-
-            </div>
-
-
+          <div className="hidden lg:block">
+          <Map/>
           </div>
+          {/* MAP */}
 
         </div>
 
+        {/* BULLET POINT CONTENT */}
+        <div className="w-full text-left ">
+          <h3 className="  mb-2 text-2xl lg:text-3xl font-semibold">Job Description:</h3>
+          <p className="text-lg lg:text-xl ">{job.description}</p>
 
+          {/* <p className="mt-5 text-lg lg:text-xl ">{job.description}</p> */}
 
+          <h3 className="mt-4 mb-2 text-2xl lg:text-3xl font-semibold lg:mt-8">
+            Duties & Responsibilities:
+          </h3>
 
+          <ul>
+            {job.duties.map((duty) => (
+              <li key={duty._id} className="flex gap-2 text-lg lg:text-xl justify-start items-center">
+                <Image src="/blue-tick.svg" width={20} height={20} alt="tick" />
+                {duty}
+              </li>
+            ))}
+          </ul>
 
-        <div className='map'></div>
+          <h3 className=" mt-4 mb-2 text-2xl lg:text-3xl font-semibold lg:mt-8">
+            Skills & Qualifications:
+          </h3>
+
+          <ul>
+            {job.skills.map((skill) => (
+              <li key={skill._id} className="flex gap-2 text-lg lg:text-xl  justify-start items-center">
+                <Image src="/blue-tick.svg" width={20} height={20} alt="tick" />
+                {skill}
+              </li>
+            ))}
+          </ul>
+
+          <div className="my-6">
+            <Link
+            onClick={updateJobId}
+              href="/jobapplication"
+              className="btn bg-[#0dcaf0] rounded-lg text-white py-2 px-5 my-5"
+            >
+              Apply Now
+            </Link>
+          </div>
+        </div>
       </div>
+      <div className="container justify-center items-center mx-auto w-11/12 text-left lg:mb-10 lg:text-center">
+        <h3 className="mt-10 font-semibold text-2xl lg:text-3xl">Related Jobs</h3>
+        <p className="my-2">
+          Lorem ipsum dolor sit amet consectetur. Arcu in amet pellentesque
+          magna integer turpis. Tortor sollicitudin varius lectus ac .
+        </p>
 
-      <div className='lg:w-8/12'>
-      <div>
-        <h1 className='text-2xl font-semibold'>Job Description:</h1>
-        <p className='mt-5 lg:text-lg'>{job.description}</p>
+        <Related industry={industry}/> 
         
       </div>
+    </>
+  );
+};
 
-
-      <div className='flex flex-col gap-2 mt-6'>
-      <h1 className='text-xl font-semibold'>Duties & Responsibilities:</h1>
-      <div className='flex gap-2 items-center mt-3'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      
-      </div>
+export default JobDetailPage;
 
 
 
-
-      <div className='flex flex-col gap-2 mt-6'>
-      <h1 className='text-xl font-semibold'>Skills & Qualifications:</h1>
-      <div className='flex gap-2 items-center mt-3'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      <div className='flex gap-2 items-center'>
-        <Image src="/bluecheck.svg" width={20} height={20} alt='' />
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-      </div>
-      
-      </div>
-
-
-      <div className='mt-5'>
-        <Link href="/jobapplication" className='bg-[#0DCAF0] text-white hover:bg-[white] hover:text-black py-2 px-5 rounded-lg'>
-          Apply Now
-        </Link>
-      </div>
-
-
-
-
-
-      </div>
-      </div>
-
-
-      <div>
-        <div>
-          <h1 className='text-center text-xl font-semibold mt-9'>Related Jobs</h1>
-          <p className='text-center'>Lorem ipsum dolor sit amet consectetur. Risus tempus eget egestas dolor ut. At interdum amet id duis pulvinar quis massa elit. Amet quam commodo est pulvinar vitae.</p>
-        </div>
-
-        <div className='flex flex-col lg:flex-row'>
-          <Card/>
-          <Card/>
-          <Card/>
-        </div>
-      </div>
-    </div>
-  )
-}

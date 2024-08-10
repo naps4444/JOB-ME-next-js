@@ -92,12 +92,21 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaRegUser } from "react-icons/fa";
 import { MdOutlineSettings } from "react-icons/md";
 import { RxQuestionMarkCircled } from "react-icons/rx";
+import Cookies from 'js-cookie';
 
 const ProfileModal = () => {
+ 
+
+//  const userId = Cookies.get("userId")
+ const userName = Cookies.get("userName")
+ const userEmail = Cookies.get("userEmail")
+ 
+
+
   return (
     <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" style={{ right: '0px', top: '0px' }}>
       <div className="fixed inset-0 bg-gray-100 bg-opacity-35 transition-opacity" aria-hidden="true"></div>
@@ -105,7 +114,7 @@ const ProfileModal = () => {
       <div className="fixed inset-0 z-10 w-screen right-0">
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <div className="transform absolute py-2 right-16 top-12 px-7 overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-3/12">
-            <div className="bg-white pb-4 pt-5 sm:p-6 sm:pb-4 w-full flex flex-col gap-3">
+            <div className="bg-white pb-4 pt-5 sm:p-6 sm:pb-4 flex flex-col gap-3">
               <h1 className='mx-auto text-center font-semibold text-xl'>Account Information</h1>
 
               <div className='flex items-center gap-2 hover:text-[#0dcaf0]'>
@@ -123,11 +132,11 @@ const ProfileModal = () => {
                 <Link href="/">Help Centre</Link>
               </div>
 
-              <div className='border-y-[1px] border-black flex gap-2 items-center py-2 mx-auto'>
+              <div className='border-y-[1px] border-black flex gap-6 items-center py-2 mx-auto'>
                 <Image src="/modelimg.svg" width={25} height={25} className='w-auto h-auto' alt='Profile Image' />
                 <div className='flex flex-col'>
-                  <h1>Alicia Kayla</h1>
-                  <p>aliciakayla5@gmail.com</p>
+                  <h1>{userName}</h1>
+                  <p>{userEmail}</p>
                 </div>
               </div>
             </div>

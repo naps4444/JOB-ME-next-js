@@ -5,9 +5,9 @@ import DropDown from './DropDown'
 
 const Hero = () => {
   return (
-    <div className='  section-11 h-28 w-full   md:h-64 lg:h-80 md:mt-0 flex flex-col justify-center'>
+    <div className='  section-11 h-[132px] lg:h-[400px] w-full md:h-64 md:mt-0 flex flex-col justify-center'>
         <div className='flex justify-center md:mt-10'>
-        <h1 className='text-white font-normal mx-auto text-lg w-9/12 lg:text-3xl text-center md:w-5/12'>SECURE JOBS AS AN AMAZING TALENT!</h1>
+        <h1 className='text-white font-medium mx-auto text-lg w-9/12 lg:text-3xl text-center md:w-5/12'>SECURE JOBS AS AN AMAZING TALENT!</h1>
         </div>
 
         <div className='mx-auto md:mt-6 lg:hidden mt-2'>

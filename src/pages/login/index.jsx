@@ -162,6 +162,9 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Loader from "@/components/loader/Loader";
+import { IoEyeOff } from "react-icons/io5";
+import { IoEye } from "react-icons/io5";
+
 
 const Login = () => {
   const {
@@ -172,6 +175,15 @@ const Login = () => {
   } = useForm();
 
   const [loading, setLoading] = useState(false)
+  const [show, setShow] = useState(false);
+  const [signinError, setSigninError] = useState("");
+
+  const toggleEye = () => {
+    setShow(!show);
+  };
+  
+  const passwordType = show ? "text" : "password";
+
 
   const router = useRouter()
 
@@ -186,12 +198,23 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       })
-      setLoading(false)
+
       const responseData = await res.json();
+
       if(res.ok){
-        setLoading(false)
+        setLoading(false);
+        setSigninError("");
         console.log('login successful:', responseData);
-        localStorage.setItem('token', responseData.token)
+        console.log(responseData.user.id);
+        Cookies.set("userId", responseData.user.id);
+        Cookies.set("userName", responseData.user.firstname);        
+        Cookies.set("lastName", responseData.user.lastName);
+        Cookies.set("userEmail", responseData.user.email);
+        
+        
+
+
+        // localStorage.setItem('token', responseData.token)
 
         Cookies.set('token', responseData.token, {
             expires: 1,
@@ -199,12 +222,15 @@ const Login = () => {
             sameSite: 'strict'
         })
 
-        router.push('/joblisting')
+        router.push('/')
         reset()
       }else{  
+        setLoading(false);
         console.error("login failed:", responseData);
+        setSigninError(responseData.message);
       }
     } catch (error) {
+      setLoading(false);
       console.error("An error occured during registration:", error);
     }
   };
@@ -231,6 +257,9 @@ const Login = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col mt-7 gap-6"
           >
+            {signinError && (
+              <p className="text-red-500 font-bold">{signinError}</p>
+            )}
             <div className="w-full border rounded-lg bg-transparent">
               <input
                 {...register("email", {
@@ -248,10 +277,24 @@ const Login = () => {
             <div className="w-full border rounded-lg bg-transparent">
               <input
                 {...register("password", { required: "Password is required" })}
-                type="password"
+                type={`${passwordType}`}
                 placeholder="Password"
                 className="w-full p-2 rounded-lg bg-transparent outline-none"
               />
+
+              
+{show ? (
+                 <button type="button" onClick={toggleEye} className="text-gray-400 absolute right-3 translate-y-3 ">
+                   <IoEye  />
+                 </button>
+              ) : (
+                <button type="button" onClick={toggleEye} className="text-gray-400 absolute right-3 translate-y-3">
+               <IoEyeOff  />
+              </button>
+               
+              )}
+
+              
             </div>
             {errors.password && (
               <p className="text-red-500">{errors.password.message}</p>

@@ -1,18 +1,22 @@
-import { createContext, useContext } from 'react';
+// context/MyContext.js
+import { createContext, useState } from 'react';
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const userId = "66a24c5418790e99e45e93e1";
-  const jobId = "669e4918d6aa999f8522e3e8";
+  // const [userId, setUserId] = useState(null);
+  // State for filter criteria
+  const [selectedJobType, setSelectedJobType] = useState('');
+  const [selectedIndustry, setSelectedIndustry] = useState('');
+  const [selectedMode, setSelectedMode] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('')
 
+  console.log(selectedJobType, selectedIndustry, selectedMode, selectedLocation);
   return (
-    <AppContext.Provider value={{ userId, jobId }}>
+    <AppContext.Provider value={{ selectedJobType, setSelectedJobType, selectedIndustry, setSelectedIndustry, selectedMode, setSelectedMode, selectedLocation, setSelectedLocation }}>
       {children}
     </AppContext.Provider>
   );
 };
 
-export const useAppContext = () => {
-  return useContext(AppContext);
-};
+export default AppContext;
